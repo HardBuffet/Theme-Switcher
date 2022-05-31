@@ -1,0 +1,68 @@
+@use "sass:color";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+// palette hex
+$white: #fff;
+$black: #000;
+
+// palette rgb
+$blackRGB: 0;
+
+$pageBg: $white;
+$pageColor: $black;
+$mainFont: 'Poppins', sans-serif;
+$buttonBoxShadow: 10px 10px 30px rgba($blackRGB,$blackRGB,$blackRGB,0.3);
+$buttonBorder: 1px solid rgba($blackRGB,$blackRGB,$blackRGB,0.03);
+
+@mixin flex($center: false) {
+  display: flex;
+  @if $center {
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+* {
+  $marPad: 0;
+
+  margin: $marPad;
+  padding: $marPad;
+  font-family: $mainFont;
+  box-sizing: border-box;
+}
+
+.page {
+  background: $pageBg;
+  color: $pageColor;
+  display: flex;
+  min-height: 100vh;
+  transition: all 0.2s;
+}
+
+.page_dark {
+  background: color.invert($pageBg, $weight: 100%);
+  color: color.invert($pageColor, $weight: 100%);
+}
+
+.button {
+  $equalSize: 15rem;
+
+  @include flex($center: true);
+  background: color.invert($pageColor, $weight: 100%);;
+  margin: auto;
+  font-size: 10rem;
+  width: $equalSize;
+  height: $equalSize;
+  border: $buttonBorder {
+    radius: 50%;
+  };
+  box-shadow: $buttonBoxShadow;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.button_active {
+  background: color.invert($pageBg, $weight: 100%);
+  color: color.invert($pageColor, $weight: 100%);
+  transform: rotate(180deg);
+}
